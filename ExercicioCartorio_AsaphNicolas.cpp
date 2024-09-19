@@ -13,50 +13,66 @@ int registrar()
 		char cargo [40];
 		//Final da criação de variáveis		
 		
-		printf("Digite o CPF a ser cadastrado: "); 
-		scanf("%s",cpf); //Salva o valor na variável
+		for (int denovo=1; denovo==1;)
+		{
+				
+			printf("Digite o CPF a ser cadastrado: "); 
+			scanf("%s",cpf); //Salva o valor na variável
+			
+			strcpy(arquivo,cpf); //Responsável por copiar os valores das string
 		
-		strcpy(arquivo,cpf); //Responsável por copiar os valores das string
+			FILE *file; //Cria o arquivo
+			file = fopen(arquivo,"w"); //Cria o arquivo
+			fprintf(file,cpf); //Salva o valor da variável no arquivo
+			fclose(file); //Fecha o arquivo
 		
-		FILE *file; //Cria o arquivo
-		file = fopen(arquivo,"w"); //Cria o arquivo
-		fprintf(file,cpf); //Salva o valor da variável no arquivo
-		fclose(file); //Fecha o arquivo
+			file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
+			fprintf(file,","); //Salva o valor no arquivo
+			fclose(file); //Fecha o arquivo
 		
-		file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
-		fprintf(file,","); //Salva o valor no arquivo
-		fclose(file); //Fecha o arquivo
+			printf("Digite o nome a ser cadastrado: ");
+			scanf("%s",nome); //Salva o valor na variável
 		
-		printf("Digite o nome a ser cadastrado: ");
-		scanf("%s",nome); //Salva o valor na variável
+			file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
+			fprintf(file,nome); //Salva o valor da variável no arquivo
+			fclose(file); //Fecha o arquivo
 		
-		file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
-		fprintf(file,nome); //Salva o valor da variável no arquivo
-		fclose(file); //Fecha o arquivo
+			file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
+			fprintf(file,","); //Salva o valor no arquivo
+			fclose(file); //Fecha o arquivo
+			
+			printf("Digite o sobrenome a ser cadastrado: ");
+			scanf("%s",sobrenome); //Salva o valor na variável
 		
-		file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
-		fprintf(file,","); //Salva o valor no arquivo
-		fclose(file); //Fecha o arquivo
+			file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
+			fprintf(file,sobrenome); //Salva o valor da variável no arquivo
+			fclose(file); //Fecha o arquivo
 		
-		printf("Digite o sobrenome a ser cadastrado: ");
-		scanf("%s",sobrenome); //Salva o valor na variável
+			file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
+			fprintf(file,","); //Salva o valor no arquivo
+			fclose(file); //Fecha o arquivo
 		
-		file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
-		fprintf(file,sobrenome); //Salva o valor da variável no arquivo
-		fclose(file); //Fecha o arquivo
+			printf("Digite o cargo a ser cadastrado: ");
+			scanf("%s",cargo); //Salva o valor na variável
 		
-		file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
-		fprintf(file,","); //Salva o valor no arquivo
-		fclose(file); //Fecha o arquivo
+			file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
+			fprintf(file,cargo); //Salva o valor da variável no arquivo
+			fclose(file); //Fecha o arquivo
 		
-		printf("Digite o cargo a ser cadastrado: ");
-		scanf("%s",cargo); //Salva o valor na variável
+			system("pause"); //Pausa o sistema 
 		
-		file = fopen(arquivo,"a"); //Abre o arquivo para atualizar
-		fprintf(file,cargo); //Salva o valor da variável no arquivo
-		fclose(file); //Fecha o arquivo
+			system("cls");		
 		
-		system("pause"); //Pausa o sistema 
+			printf("Gostaria de registrar outro nome?\n\n");
+			printf("\t1 - Sim\n");
+			printf("\t2 - Não\n\n");
+			printf("Opção: ");
+			
+			scanf("%d", &denovo);
+			
+			system("cls");
+			
+		}
 	}
 
 int consultar()
@@ -68,26 +84,42 @@ int consultar()
 		char conteudo[200];
 		//Final da criação de variáveis	
 		
-		printf("Digite o CPF a ser consultado: ");
-		scanf("%s",cpf); //Salva o valor na variável
-		
-		FILE *file;
-		file = fopen(cpf,"r"); //Lê o arquivo
-		
-		if(file == NULL)
+		for(int denovo=1; denovo==1;)
 		{
-			printf("Esse CPF não foi localizado!\n");
-		}
 		
-		while(fgets(conteudo,200,file) != NULL)
-		{
-			printf("\nEssas são as informeções do usuário consultado: ");
-			printf("%s", conteudo);
-			printf("\n\n");
-		}
+			printf("Digite o CPF a ser consultado: ");
+			scanf("%s",cpf); //Salva o valor na variável
 		
-		fclose(file); //Fecha o arquivo
-		system("pause");
+			FILE *file;
+			file = fopen(cpf,"r"); //Lê o arquivo
+		
+			if(file == NULL)
+			{
+				printf("Esse CPF não foi localizado!\n");
+			}
+		
+			while(fgets(conteudo,200,file) != NULL)
+			{
+				printf("\nEssas são as informeções do usuário consultado: ");
+				printf("%s", conteudo);
+				printf("\n\n");
+			}
+		
+			fclose(file); //Fecha o arquivo
+			system("pause");
+		
+			system("cls");		
+		
+			printf("Gostaria de consultar outro nome?\n\n");
+			printf("\t1 - Sim\n");
+			printf("\t2 - Não\n\n");
+			printf("Opção: ");
+			
+			scanf("%d", &denovo);
+			
+			system("cls");
+		
+		}
 	}
 
 int deletar()
@@ -96,27 +128,42 @@ int deletar()
 		
 		char cpf[40];
 		
-		printf("Digite o CPF a ser deletado: ");
-		scanf("%s",cpf);
-		
-		FILE *file;
-		file = fopen(cpf,"r");
-		
-		if(file == NULL)
+		for(int denovo=1; denovo==1;)
 		{
-			printf("\nCPF não encontrado no sistema!\n");
+		
+			printf("Digite o CPF a ser deletado: ");
+			scanf("%s",cpf);
+		
+			FILE *file;
+			file = fopen(cpf,"r");
+		
+			if(file == NULL)
+			{
+				printf("\nCPF não encontrado no sistema!\n");
+				system("pause");
+			}
+		
+			else if(file != NULL)
+			{
+				fclose(file); //Fecha o arquivo
+				remove(cpf);
+				printf("\nCPF deletado com sucesso!\n");
+			}
+		
 			system("pause");
+		
+			system("cls");		
+		
+			printf("Gostaria de deletar outro nome?\n\n");
+			printf("\t1 - Sim\n");
+			printf("\t2 - Não\n\n");
+			printf("Opção: ");
+			
+			scanf("%d", &denovo);
+			
+			system("cls");
+		
 		}
-		
-		else if(file != NULL)
-		{
-			fclose(file); //Fecha o arquivo
-			remove(cpf);
-			printf("\nCPF deletado com sucesso!\n");
-		}
-		
-		system("pause");
-		
 	}
 
 int main ()
@@ -168,6 +215,8 @@ int main ()
 			break;
 		
 		}
+		
+		
 	
 	}
 	
